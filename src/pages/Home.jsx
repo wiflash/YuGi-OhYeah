@@ -1,21 +1,27 @@
 import React from "react";
 import {withRouter} from "react-router-dom";
-import {Redirect} from "react-router-dom";
 import {connect} from "unistore/react";
 import {actions, store} from "../Store";
+import NavigationBar from "../components/navbar";
 
 
 class Home extends React.Component {
-    render() {
+    checkIsLogin() {
         if (this.props.isLogin === false) {
-            return <Redirect to={{ pathname: "/login" }} />;
-        } else {
-            return (
+            this.props.history.push("/login");
+        }
+    }
+
+    render() {
+        this.checkIsLogin();
+        return (
+            <React.Fragment>
+                <NavigationBar {...this.props}/>
                 <p className="h3 text-center font-weight-bold">
                     Home page
                 </p>
-            );
-        }
+            </React.Fragment>
+        );
     }
 }
 

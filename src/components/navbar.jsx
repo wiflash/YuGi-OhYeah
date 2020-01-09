@@ -8,6 +8,7 @@ import logo from '../logo.svg';
 
 class NavigationBar extends React.Component {
     handleAuth = menu => {
+        console.log("MASUK")
         if (menu === "Logout") {
             store.setState({isLogin: false});
             this.props.history.push("/");
