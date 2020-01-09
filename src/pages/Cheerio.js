@@ -43,7 +43,7 @@ class Yugi extends React.Component{
         })
         .catch(function(error){
             console.log(error) 
-        })
+        })}
 
     cardFilter= async setName=>{
         const {cardSetName}=this.state
@@ -52,20 +52,16 @@ class Yugi extends React.Component{
                 return item}
         })
         return false
-    }   
-    
     }
         render(){
             const{cardSetName}= this.state
             console.log("APasih", cardSetName)
             const setcard=cardSetName.map((item)=>{
-                return item["Set Name"].slice(0,5)}
+                return item["Set Name"]}
                 
             )
                return <div>
-                   <ul>
-                       <li>{setcard}</li>
-                   </ul>
+                       {setcard}
                    
                    </div>
     }
