@@ -19,8 +19,8 @@ class NavigationBar extends React.Component {
     }
 
     render() {
-        const auth = localStorage.getItem("isLogin") ? ["Home", "Profile", "Logout"]
-            : ["Home", "Profile", "Login"]
+        const auth = localStorage.getItem("isLogin") ? ["Home", "Profile", "Deck", "Logout"]
+            : ["Home", "Profile", "Deck", "Login"]
         const authMenu = auth.map(authElement => {
             return (
                 <Nav.Link onClick={() => this.handleAuth(authElement)}>
