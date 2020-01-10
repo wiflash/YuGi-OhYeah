@@ -1,12 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Yugi from "./pages/Cheerio"
+import MainRoute from "./routes/MainRoute";
 
-class App extends React.Component{
+
+class App extends React.Component {
   render(){
-  return <Yugi />
- }
+    return (
+      <MainRoute />
+    );
+  }
 }
 
 export default App;
