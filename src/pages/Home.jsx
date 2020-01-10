@@ -27,16 +27,15 @@ class Home extends React.Component {
     }
 
     getFilteredCardList() {
+        let cardSetPrice;
         store.setState({isLoading: true});
         axios.get("https://db.ygoprodeck.com/api/v5/cardsets.php")
         .then((response) => {
             store.setState({
                 cards: response.data.filter((eachSet) => eachSet["Number of Cards"] >= 50)
-                                    .sort((a, b) => b["Number of Cards"]-a["Number of Cards"]),
+                        .sort((a, b) => b["Number of Cards"]-a["Number of Cards"]),
                 isLoading: false
-
             });
-            console.log(this.props.cards)
         })
     }
 
@@ -73,9 +72,6 @@ class Home extends React.Component {
                         </Row>
                     </Container>
                 </Container>
-                <p className="h3 text-center font-weight-bold">
-                    Home page
-                </p>
             </React.Fragment>
         );
     }
