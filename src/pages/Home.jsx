@@ -26,18 +26,15 @@ class Home extends React.Component {
         })
     }
 
-    getFilteredQuantityCardList() {
+    getFilteredCardList() {
         store.setState({isLoading: true});
         axios.get("https://db.ygoprodeck.com/api/v5/cardsets.php")
         .then((response) => {
             store.setState({
-                cards: response.data.filter((eachSet) => eachSet["Number of Cards"] >= 50),
+                cards: response.data.filter((eachSet) => eachSet["Number of Cards"] >= 50)
+                                    .sort((a, b) => b["Number of Cards"]-a["Number of Cards"]),
                 isLoading: false
-            });
-            const currentCards = this.props.cards;
-            store.setState({
-                cards: currentCards.sort((a, b) => b["Number of Cards"]-a["Number of Cards"]),
-                isLoading: false
+
             });
             console.log(this.props.cards)
         })
@@ -46,7 +43,7 @@ class Home extends React.Component {
     handleSubmit(event) {
         store.setState({budget: parseFloat(this.props.budget)});
         this.convertToDollar();
-        this.getFilteredQuantityCardList();
+        this.getFilteredCardList();
         event.preventDefault();
     }
     
