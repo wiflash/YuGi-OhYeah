@@ -7,7 +7,7 @@ import NavigationBar from "../components/navbar";
 
 class Home extends React.Component {
     checkIsLogin() {
-        if (this.props.isLogin === false) {
+        if (localStorage.getItem("isLogin") === null) {
             this.props.history.push("/login");
         }
     }
@@ -26,4 +26,4 @@ class Home extends React.Component {
 }
 
 
-export default connect("isLogin", actions)(withRouter(Home));
+export default connect(actions)(withRouter(Home));

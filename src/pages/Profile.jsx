@@ -8,12 +8,15 @@ import NavigationBar from "../components/navbar";
 
 class Profile extends React.Component {
     checkIsLogin() {
-        if (this.props.isLogin === false) {
+        if (localStorage.getItem("isLogin") === null) {
             this.props.history.push("/login");
         }
     }
 
     render() {
+        const email = localStorage.getItem("email");
+        const fullname = localStorage.getItem("fullname");
+        const avatar = localStorage.getItem("avatar");
         this.checkIsLogin();
         return (
             <React.Fragment>
@@ -23,11 +26,11 @@ class Profile extends React.Component {
                         <Row>
                             <ListGroup horizontal className="mx-auto">
                                 <ListGroup.Item variant="secondary" className="text-center">
-                                    <Image fluid src={this.props.avatar} alt={this.props.avatar}/>
+                                    <Image fluid src={avatar} alt="avatar"/>
                                 </ListGroup.Item>
                                 <ListGroup.Item className="pr-auto">
-                                    <p className="h3 font-weight-bold">Nama: {this.props.username}</p>
-                                    <p>{this.props.email}</p>
+                                    <p className="h3 font-weight-bold">Nama: {fullname}</p>
+                                    <p>{email}</p>
                                 </ListGroup.Item>
                             </ListGroup>
                         </Row>
@@ -39,4 +42,4 @@ class Profile extends React.Component {
 };
 
 
-export default connect("username, avatar, email, isLogin",actions)(withRouter(Profile));
+export default connect(actions)(withRouter(Profile));

@@ -10,7 +10,7 @@ class NavigationBar extends React.Component {
     handleAuth = menu => {
         console.log("MASUK")
         if (menu === "Logout") {
-            store.setState({isLogin: false});
+            localStorage.removeItem("isLogin");;
             this.props.history.push("/");
         } else if (menu === "Home") {
             this.props.history.push("/");
@@ -20,8 +20,8 @@ class NavigationBar extends React.Component {
     }
 
     render() {
-        console.log(this.props.isLogin);
-        const auth = this.props.isLogin ? ["Home", "Profile", "Logout"]
+        console.log(localStorage.getItem("isLogin"));
+        const auth = localStorage.getItem("isLogin") ? ["Home", "Profile", "Logout"]
             : ["Home", "Profile", "Login"]
         const authMenu = auth.map(authElement => {
             return (
@@ -51,4 +51,4 @@ class NavigationBar extends React.Component {
 }
 
 
-export default connect("isLogin", actions)(withRouter(NavigationBar));
+export default connect(actions)(withRouter(NavigationBar));

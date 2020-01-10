@@ -14,10 +14,16 @@ class Login extends React.Component {
             username: this.props.username,
             password: this.props.password
         }
-        axios.post("https://api-todofancy.herokuapp.com/api/auth", data)
+        axios.post("https://login-uhuy.free.beeceptor.com/login", data)
         .then((response) => {
-            this.props.setUserData(response.data.user_data);
-            this.props.history.push("/profile");
+            if (response.data.hasOwnProperty("apiKey")) {
+                localStorage.setItem("apiKey", response.data.apiKey);
+                localStorage.setItem("email", response.data.email);
+                localStorage.setItem("fullname", response.data.fullname);
+                localStorage.setItem("avatar", response.data.avatar);
+                localStorage.setItem("isLogin", true);
+                this.props.history.push("/profile");
+            }
         })
         .catch((error) => console.log(error));
     }
@@ -60,4 +66,4 @@ class Login extends React.Component {
 }
 
 
-export default connect("username, password, email", actions)(withRouter(Login));
+export default connect("username, password", actions)(withRouter(Login));

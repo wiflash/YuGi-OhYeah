@@ -5,9 +5,6 @@ import axios from "axios";
 const initialState = {
     username: "",
     password: "",
-    email: "",
-    avatar: "",
-    isLogin: false,
     cards: [],
     isLoading: true
 };
@@ -32,14 +29,5 @@ export const actions = store => ({
             .catch((error) => {
                 store.setState({isLoading: true})
             });
-    },
-
-    setUserData: (state, userData) => {
-        store.setState({
-            username: userData.username,
-            email: userData.email,
-            avatar: userData.avatar,
-            isLogin: true
-        })
     }
 });
