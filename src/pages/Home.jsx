@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import {withRouter} from "react-router-dom";
 import {connect} from "unistore/react";
 import {actions, store} from "../Store";
@@ -13,8 +14,39 @@ class Home extends React.Component {
         }
     }
 
+    convertToDollar() {
+        store.setState({isLoading: true});
+        axios.get("https://api.exchangeratesapi.io/latest?base=IDR&symbols=USD")
+        .then((response) => {
+            const rate = response.data.rates.USD;
+            store.setState({
+                budgetDollar: Math.round(rate*this.props.budget*100)/100,
+                isLoading: false
+            });
+        })
+    }
+
+    getFilteredQuantityCardList() {
+        store.setState({isLoading: true});
+        axios.get("https://db.ygoprodeck.com/api/v5/cardsets.php")
+        .then((response) => {
+            store.setState({
+                cards: response.data.filter((eachSet) => eachSet["Number of Cards"] >= 50),
+                isLoading: false
+            });
+            const currentCards = this.props.cards;
+            store.setState({
+                cards: currentCards.sort((a, b) => b["Number of Cards"]-a["Number of Cards"]),
+                isLoading: false
+            });
+            console.log(this.props.cards)
+        })
+    }
+
     handleSubmit(event) {
-        alert('A value was submitted: ' + this.props.budget);
+        store.setState({budget: parseFloat(this.props.budget)});
+        this.convertToDollar();
+        this.getFilteredQuantityCardList();
         event.preventDefault();
     }
     
@@ -53,4 +85,4 @@ class Home extends React.Component {
 }
 
 
-export default connect("budget", actions)(withRouter(Home));
+export default connect("budget, budgetDollar, cards", actions)(withRouter(Home));

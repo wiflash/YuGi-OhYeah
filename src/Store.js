@@ -6,6 +6,7 @@ const initialState = {
     username: "",
     password: "",
     budget: 0,
+    budgetDollar: 0,
     cards: [],
     isLoading: true
 };
@@ -17,7 +18,6 @@ const baseUrl = "https://db.ygoprodeck.com/api/v5/cardinfo.php";
 export const actions = store => ({
     handleSetGlobal: (state, event) => {
         store.setState({ [event.target.name]: event.target.value });
-        console.log(store.getState().budget);
     },
 
     getCardDetails: (state) => {
