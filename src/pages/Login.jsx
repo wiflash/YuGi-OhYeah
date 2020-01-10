@@ -18,7 +18,7 @@ class Login extends React.Component {
         .then((response) => {
             if (response.data.hasOwnProperty("apiKey")) {
                 this.props.setUserData(response.data);
-                this.props.history.push("/profile");
+                this.props.history.push("/");
             }
         })
         .catch((error) => console.log(error));
