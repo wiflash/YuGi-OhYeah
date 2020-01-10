@@ -17,11 +17,7 @@ class Login extends React.Component {
         axios.post("https://login-uhuy.free.beeceptor.com/login", data)
         .then((response) => {
             if (response.data.hasOwnProperty("apiKey")) {
-                localStorage.setItem("apiKey", response.data.apiKey);
-                localStorage.setItem("email", response.data.email);
-                localStorage.setItem("fullname", response.data.fullname);
-                localStorage.setItem("avatar", response.data.avatar);
-                localStorage.setItem("isLogin", true);
+                this.props.setUserData(response.data);
                 this.props.history.push("/profile");
             }
         })

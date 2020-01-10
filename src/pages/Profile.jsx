@@ -29,7 +29,7 @@ class Profile extends React.Component {
                                     <Image fluid src={avatar} alt="avatar"/>
                                 </ListGroup.Item>
                                 <ListGroup.Item className="pr-auto">
-                                    <p className="h3 font-weight-bold">Nama: {fullname}</p>
+                                    <p className="h3 font-weight-bold">{fullname}</p>
                                     <p>{email}</p>
                                 </ListGroup.Item>
                             </ListGroup>

@@ -29,5 +29,13 @@ export const actions = store => ({
             .catch((error) => {
                 store.setState({isLoading: true})
             });
+    },
+
+    setUserData: (state, data) => {
+        localStorage.setItem("apiKey", data.apiKey);
+        localStorage.setItem("email", data.email);
+        localStorage.setItem("fullname", data.fullname);
+        localStorage.setItem("avatar", data.avatar);
+        localStorage.setItem("isLogin", true);
     }
 });
