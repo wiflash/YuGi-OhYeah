@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Button, Col, Row, ListGroup} from 'react-bootstrap'
 
 const cheerio = require('cheerio')
 
@@ -66,27 +67,23 @@ class PageInitScrap extends Component {
     render() {
         return (
             <React.Fragment>
-                {/* <div className="random">{this.state.total.map(item => {
-                    return item.link //["Set Name"]
-                })}
-                </div> */}
-                <button onClick={() => this.initScrap()}>Get Available Decks</button>
-                {/* <button onClick={() => this.initScrap2()}>KLIK2</button> */}
-                <button onClick={() => this.first_try(this.state.total)}>Get Deck List</button>
-                {
-                    (this.state.total2.length !== 0) ? this.state.total2.map(item => {
-                        return <div>{item[0]} sejumlah {item[1]}<br/></div> ;
-                    }) : <div></div>
-                }
-
-                <br />
+                <Row className="mb-5">
+                    <Col xs="8" className="mx-auto text-center">
+                        {
+                            (this.state.total2.length !== 0) ? this.state.total2.map(item => {
+                                return <ListGroup.Item>{item[0]} sejumlah {item[1]}<br/></ListGroup.Item> ;
+                            }) : <Button variant="light" className="text-info" onClick={() => this.initScrap()}>Get Available Decks</Button>
+                        }
+                    </Col>
+                </Row>
                 {
                     this.state.total.map(singleDeck => {
                         return (
-                            <div>
-                                <button onClick={() => this.first_try(singleDeck.link)}>Cek Harga{singleDeck.link}</button>
-                                <h3>HARGA {singleDeck.price}</h3>
-                            </div>
+                            <Row className="mb-5">
+                                <Col xs="12">
+                                    <Button variant="light" className="text-info" onClick={() => this.first_try(singleDeck.link)}>Cek Harga{singleDeck.link}</Button>
+                                </Col>
+                            </Row>
                         )
                     })
                 }

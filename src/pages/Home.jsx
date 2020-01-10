@@ -4,6 +4,7 @@ import {withRouter} from "react-router-dom";
 import {connect} from "unistore/react";
 import {actions, store} from "../Store";
 import NavigationBar from "../components/navbar";
+import Yugi from "../components/getCardList";
 import {Container, Row, Col, InputGroup, Form, FormControl, Button} from "react-bootstrap";
 
 
@@ -27,7 +28,6 @@ class Home extends React.Component {
     }
 
     getFilteredCardList() {
-        let cardSetPrice;
         store.setState({isLoading: true});
         axios.get("https://db.ygoprodeck.com/api/v5/cardsets.php")
         .then((response) => {
@@ -62,7 +62,7 @@ class Home extends React.Component {
                                             value={this.props.budget} onChange={this.props.handleSetGlobal}
                                         />
                                         <InputGroup.Append>
-                                            <Button variant="outline-info" type="submit">
+                                            <Button variant="light" className="text-info" type="submit">
                                                 Get Set!
                                             </Button>
                                         </InputGroup.Append>

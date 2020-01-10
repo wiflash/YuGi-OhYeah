@@ -18,7 +18,8 @@ class MainRoute extends React.Component {
                         <Route exact path="/" component={Home} />
                         <Route exact path="/profile" component={Profile} />
                         <Route exact path="/login" component={Login} />
-                        <Route path="/deck" component={Deck} />
+                        <Route exact path="/deck" component={Deck} />
+                        <Route path="/:set-details" component={Home} />
                     </Switch>
                 </BrowserRouter>
             </Provider>

@@ -21,9 +21,7 @@ class Deck extends React.Component {
                 <NavigationBar {...this.props}/>
                 <Container fluid className="my-5">
                     <Container>
-                        <Row>
-                            <PageInitScrap />
-                        </Row>
+                        <PageInitScrap />
                     </Container>
                 </Container>
             </React.Fragment>
