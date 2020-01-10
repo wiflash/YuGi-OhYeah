@@ -5,6 +5,8 @@ import axios from "axios";
 const initialState = {
     username: "",
     password: "",
+    budget: 0,
+    budgetDollar: 0,
     cards: [],
     isLoading: true
 };
