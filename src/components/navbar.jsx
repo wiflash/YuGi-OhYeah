@@ -3,7 +3,7 @@ import {withRouter} from "react-router-dom";
 import {connect} from "unistore/react";
 import {actions, store} from "../Store";
 import {Navbar, Nav} from 'react-bootstrap';
-import logo from '../logo.svg';
+import logo from '../../public/logo512.png';
 
 
 class NavigationBar extends React.Component {

@@ -5,7 +5,7 @@ import {connect} from "unistore/react";
 import {actions} from "../Store";
 import {Container, Row, Form, Button, ListGroup, Image} from 'react-bootstrap';
 import NavigationBar from "../components/navbar";
-import logo from '../logo.svg';
+import logo from '../../public/logo512.png';
 
 
 class Login extends React.Component {
