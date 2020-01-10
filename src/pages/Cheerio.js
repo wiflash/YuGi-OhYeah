@@ -47,6 +47,7 @@ class Yugi extends React.Component{
 
     cardFilter= async setName=>{
         const {cardSetName}=this.state
+
         const finalList=cardSetName.filter(item=>{
             if (item.card_sets.set_name===setName){
                 return item}
@@ -54,15 +55,20 @@ class Yugi extends React.Component{
         return false
     }
         render(){
+            const item_nested=[]
             const{cardSetName}= this.state
             console.log("APasih", cardSetName)
-            const setcard=cardSetName.map((item)=>{
-                return item["Set Name"]}
-                
+            const setcard=cardSetName.map((item) =>{
+            item_nested.push(item['Set Name'])
+                return item_nested}
             )
                return <div>
-                       {setcard}
-                   
+                       {item_nested[0]}<br/>
+                       {item_nested[1]}<br/>
+                       {item_nested[2]}<br/>
+                       {item_nested[3]}<br/>
+                       {item_nested[4]}<br/>
+                       {item_nested[5]}<br/>
                    </div>
     }
 
