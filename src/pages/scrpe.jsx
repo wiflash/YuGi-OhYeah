@@ -66,16 +66,16 @@ class PageInitScrap extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="random">{this.state.total.map(item => {
+                {/* <div className="random">{this.state.total.map(item => {
                     return item.link //["Set Name"]
                 })}
-                </div>
+                </div> */}
                 <button onClick={() => this.initScrap()}>Get Available Decks</button>
                 {/* <button onClick={() => this.initScrap2()}>KLIK2</button> */}
                 <button onClick={() => this.first_try(this.state.total)}>Get Deck List</button>
                 {
                     (this.state.total2.length !== 0) ? this.state.total2.map(item => {
-                        return <div>{item[0]} sejumlah {item[1]}</div>;
+                        return <div>{item[0]} sejumlah {item[1]}<br/></div> ;
                     }) : <div></div>
                 }
 
