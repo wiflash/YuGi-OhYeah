@@ -8,7 +8,6 @@ import logo from '../logo.svg';
 
 class NavigationBar extends React.Component {
     handleAuth = menu => {
-        console.log("MASUK")
         if (menu === "Logout") {
             localStorage.removeItem("isLogin");;
             this.props.history.push("/");
@@ -20,9 +19,8 @@ class NavigationBar extends React.Component {
     }
 
     render() {
-        console.log(localStorage.getItem("isLogin"));
-        const auth = localStorage.getItem("isLogin") ? ["Home", "Profile", "Logout"]
-            : ["Home", "Profile", "Login"]
+        const auth = localStorage.getItem("isLogin") ? ["Home", "Profile", "Deck", "Logout"]
+            : ["Home", "Profile", "Deck", "Login"]
         const authMenu = auth.map(authElement => {
             return (
                 <Nav.Link onClick={() => this.handleAuth(authElement)}>
